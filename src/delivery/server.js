@@ -8,8 +8,8 @@ const { port, host } = config();
 const Server = () => {
     const app = express();
     app.use(jsonMiddleware);
-    app.use(errorRoute);
     app.use(appRoute);
+    app.use(errorRoute);
     app.listen(port, host, () => {
         console.info(`App server running on port ${port}`);
     })
