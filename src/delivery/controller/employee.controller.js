@@ -21,8 +21,20 @@ const EmployeeController = () => {
         res.json(Response().successMessage(res.statusCode, 'SUCCESS', employee));
     }
 
+    const updateEmployee = (req, res) => {
+        const payload = req.body;
+        const newEmployee = employeeService.updateEmployee(payload);
+        res.json(Response().successMessage(res.statusCode, 'SUCCESS', newEmployee));
+    }
+
+    const deleteEmployee = (req, res) => {
+        const id = req.params.id
+        const employee = employeeService.removeEmployee(+id);
+        res.json(Response().successMessage(res.statusCode, 'SUCCESS', employee));
+    }
+
     return {
-        createEmployee, listEmployee, getEmployee
+        createEmployee, listEmployee, getEmployee, updateEmployee, deleteEmployee
     }
 }
 
