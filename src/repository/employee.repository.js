@@ -7,8 +7,7 @@ const EmployeeRepository = () => {
     const list = () => employeeDb;
 
     const getById = (id) => {
-        const employee = employeeDb.find((e) => e.id === id);
-        return employee
+        return  employeeDb.find((e) => e.id === id);
     }
 
     const update = (payload) => {
@@ -41,8 +40,7 @@ const EmployeeRepository = () => {
     }
 
     function isIdExist(id) {
-        const idx = employeeDb.findIndex((e) => e.id === id);
-        return idx;
+        return employeeDb.findIndex((e) => e.id === id);
     }
 
     return {
