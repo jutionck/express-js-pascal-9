@@ -1,7 +1,9 @@
 const express = require('express');
-const Routes = require('../../config/app.routes');
 const router = express.Router();
-router.use(Routes().ERROR_PATH, (req, res) => {
-    res.send('Error page!');
+router.get('*', (req, res) => {
+    res.status(404).json({
+        code: res.statusCode,
+        message: `Oops, page not found!`
+    });
 });
 module.exports = router;

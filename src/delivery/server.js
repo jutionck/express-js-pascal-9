@@ -1,5 +1,4 @@
 const express = require('express');
-const EmployeeRoute = require('./routes/employee.route');
 const config = require('../config/config');
 const errorRoute = require('./routes/error.route');
 const jsonMiddleware = require('./middleware/json.middleware');
