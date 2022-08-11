@@ -1,6 +1,5 @@
 const DbQuery = require('../config/db.query');
 const UserDto = require('../model/dto/user.dto');
-const bcrypt = require('bcryptjs');
 const { passwordUtil, passwordCompare} = require('../utils/password.util');
 const UserRepository = (db) => {
     const create = async (payload) => {
@@ -50,7 +49,12 @@ const UserRepository = (db) => {
     const getUserByUsernamePassword = async (username, password) => {
         try {
             const result = await db.query(DbQuery().SELECT_USER, [username]);
+            console.log('UserRepository.getUserByUsernamePassword.result:', result)
+            if (result.rowCount === 0) {
+                return null;
+            }
             const validPassword = await passwordCompare(password, result.rows[0].password);
+            console.log('UserRepository.getUserByUsernamePassword.validPassword:', validPassword)
             if (!validPassword) {
                 return null;
             }
