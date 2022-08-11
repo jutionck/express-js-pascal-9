@@ -6,8 +6,15 @@ const DbQuery = () => {
     const SELECT_BIODATA_ID = `SELECT id,first_name,last_name,dob,pob,address,marital_status from biodata where id = $1`;
     const SELECT_BIODATA_SEARCH = `SELECT id,first_name,last_name,dob,pob,address,marital_status from biodata where first_name ilike $1 or last_name ilike $1 or dob ilike $1 or pob ilike $1 or address ilike $1 or marital_status ilike $1`
 
+    const INSERT_USER = `INSERT into users (username, email, password) values ($1,$2,$3) RETURNING *`;
+    const SELECT_USER = `SELECT id,password from users where username=$1`;
+    const SELECT_USER_LIST = `SELECT id,username,email from users order by id desc`;
+    const SELECT_USER_ID = `SELECT id,username,email from users where id=$1`;
+    const SELECT_USER_USERNAME = `SELECT id,username,email from users where username=$1`;
+
     return {
-        INSERT_BIODATA, UPDATE_BIODATA, DELETE_BIODATA, SELECT_BIODATA_LIST, SELECT_BIODATA_ID, SELECT_BIODATA_SEARCH
+        INSERT_BIODATA, UPDATE_BIODATA, DELETE_BIODATA, SELECT_BIODATA_LIST, SELECT_BIODATA_ID, SELECT_BIODATA_SEARCH,
+        INSERT_USER, SELECT_USER, SELECT_USER_LIST, SELECT_USER_ID, SELECT_USER_USERNAME
     }
 }
 
