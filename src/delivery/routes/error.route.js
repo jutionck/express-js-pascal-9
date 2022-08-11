@@ -1,9 +1,10 @@
 const express = require('express');
+const Routes = require("../../config/app.routes");
 const router = express.Router();
-router.get('*', (req, res) => {
-    res.status(404).json({
+router.use(Routes().ERROR_PATH, (req, res) => {
+    res.status(500).json({
         code: res.statusCode,
-        message: `Oops, page not found!`
+        message: `Oops, Internal server error!`
     });
 });
 module.exports = router;
