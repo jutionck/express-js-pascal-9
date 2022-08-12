@@ -18,7 +18,9 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1",
     "pg": "^8.7.3",
+    "time-convert": "^0.0.2",
     "uuid": "^8.3.2"
   }
 }
